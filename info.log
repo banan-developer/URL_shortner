@@ -1,0 +1,1 @@
+ERROR	2026/08/26 00:02:03 main.go:33: ошибка подлкючения к базе данныхsql: unknown driver "mysql" (forgotten import?)
