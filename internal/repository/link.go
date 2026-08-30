@@ -1,6 +1,7 @@
 package repository
 
 import (
+	"URL_shortner/internal/domain"
 	"database/sql"
 )
 
@@ -12,4 +13,21 @@ func NewLinksRepo(db *sql.DB) *LinksRepo {
 	return &LinksRepo{
 		db: db,
 	}
+}
+
+func (r *LinksRepo) GetLinkByID(UserID int) (*domain.LinkResponse, error) {
+	var Links domain.LinkResponse
+	err := r.db.QueryRow("SELECT original_url, short_url, clicks, created_at, expires_at, is_active FROM links WHERE users_id = ?", UserID).Scan(&Links.OriginalURL, &Links.ShortURL, &Links.Clicks, &Links.CreatedAt, &Links.ExpiresAt, &Links.IsActive)
+	if err != nil {
+		return nil, err
+	}
+	return &Links, nil
+}
+
+func (r *LinksRepo) CreateLink(link *domain.Link) error {
+	_, err := r.db.Exec("INSERT INTO links (original_url, short_url, clicks, expires_at, is_active) VALUES (?, ?, ?, ?, ?)", link.OriginalURL, link.ShortCode, link.Clicks, link.ExpiresAt, link.IsActive)
+	if err != nil {
+		return err
+	}
+	return nil
 }

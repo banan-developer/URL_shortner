@@ -1,6 +1,10 @@
 package main
 
 import (
+	"URL_shortner/internal/repository"
+	"URL_shortner/internal/service"
+	"URL_shortner/internal/transport"
+	"URL_shortner/pkg/auth"
 	"database/sql"
 	"fmt"
 	"log"
@@ -41,6 +45,14 @@ func main() {
 	}
 
 	defer db.Close()
+
+	auth.InitStore()
+
+	LinkRepo := repository.NewLinksRepo(db)
+	LinksService := service.NewLinksService(LinkRepo)
+	LinkHandler := transport.NewLinksTransport(LinksService)
+
+	http.HandleFunc("/api/link", LinkHandler.Link)
 
 	http.HandleFunc("/home", homeHandler)
 

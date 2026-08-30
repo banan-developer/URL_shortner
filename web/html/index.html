@@ -7,9 +7,15 @@
 </head>
 <body>
     <div id="VUE">
-        <input placeholder="впишите ссылку">
-        <button @click="click_button"></button>
-        <p>кол-во кликов: {{count}}</p>
+        <h1>Make it short</h1>
+        <h2>by Banana</h2>
+        <label for="link">Past the URL to be shortened</label>
+        <input placeholder="enter you link here" name="link" v-model="link">
+        <button @click="CreateLink">shorten</button>
+        {{shortLink}}
+
+        <p>Sign up to manage your links</p>
+        <button>Create account</button>
     </div>
 
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
