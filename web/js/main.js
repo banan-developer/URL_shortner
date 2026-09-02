@@ -3,7 +3,8 @@ const App = {
         return {
             count: 1,
             link: "",
-            shortLink: ""
+            shortLink: "",
+            shortCode: ""
         }
     },
     mounted(){
@@ -31,7 +32,8 @@ const App = {
                 })
                 })
                 const data = await res.json()
-                this.shortLink = data
+                this.shortCode = data
+                this.shortLink = "http://127.0.0.1:8020/" + this.shortCode
 
             }catch(err){
                 console.log(err)

@@ -60,3 +60,16 @@ func (t *LinksTransport) CreateLink(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(result)
 }
+
+func (t *LinksTransport) GetLinkByShortlink(w http.ResponseWriter, r *http.Request) {
+	shortCode := r.PathValue("shortCode")
+
+	link, err := t.service.GetLinkByShortlink(shortCode)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
+	http.Redirect(w, r, link.Original_URL, http.StatusFound)
+
+}

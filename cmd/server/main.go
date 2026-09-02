@@ -53,6 +53,7 @@ func main() {
 	LinkHandler := transport.NewLinksTransport(LinksService)
 
 	http.HandleFunc("/api/link", LinkHandler.Link)
+	http.HandleFunc("/{shortCode}", LinkHandler.GetLinkByShortlink)
 
 	http.HandleFunc("/home", homeHandler)
 

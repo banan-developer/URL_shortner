@@ -43,3 +43,10 @@ func (s *LinksService) CreateLink(OriginalURL string) (string, error) {
 	}
 	return shortURL, nil
 }
+
+func (s *LinksService) GetLinkByShortlink(ShortCode string) (*domain.CreateLinkRequest, error) {
+	if ShortCode == "" {
+		return nil, errors.New("Ошибка при получении короткой ссылки")
+	}
+	return s.repo.GetLinkByShortlink(ShortCode)
+}

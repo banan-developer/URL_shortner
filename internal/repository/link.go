@@ -31,3 +31,12 @@ func (r *LinksRepo) CreateLink(link *domain.Link) error {
 	}
 	return nil
 }
+
+func (r *LinksRepo) GetLinkByShortlink(shortCode string) (*domain.CreateLinkRequest, error) {
+	var Link domain.CreateLinkRequest
+	err := r.db.QueryRow("SELECT original_url FROM links WHERE short_url = ?", shortCode).Scan(&Link.Original_URL)
+	if err != nil {
+		return nil, err
+	}
+	return &Link, nil
+}
