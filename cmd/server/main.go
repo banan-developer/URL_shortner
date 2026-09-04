@@ -52,10 +52,16 @@ func main() {
 	LinksService := service.NewLinksService(LinkRepo)
 	LinkHandler := transport.NewLinksTransport(LinksService)
 
+	UserRepo := repository.NewUserRepo(db)
+	UserService := service.NewUserService(UserRepo)
+	UserHanlder := transport.NewUserTransport(UserService)
+
 	http.HandleFunc("/api/link", LinkHandler.Link)
 	http.HandleFunc("/{shortCode}", LinkHandler.GetLinkByShortlink)
 
 	http.HandleFunc("/home", homeHandler)
+	http.HandleFunc("/registration", UserHanlder.RegistratingUser)
+	http.HandleFunc("/login", UserHanlder.LoginUser)
 
 	fileServer := http.FileServer(http.Dir("./web/static"))
 
