@@ -3,6 +3,7 @@ package transport
 import (
 	"URL_shortner/internal/domain"
 	"URL_shortner/internal/service"
+	"URL_shortner/pkg/auth"
 	"encoding/json"
 	"fmt"
 	"net/http"
@@ -43,6 +44,7 @@ func (t *LinksTransport) GetLinkByID(w http.ResponseWriter, r *http.Request) {
 
 func (t *LinksTransport) CreateLink(w http.ResponseWriter, r *http.Request) {
 	var request domain.CreateLinkRequest
+	UserID, _ := auth.GetUserId(r)
 
 	err := json.NewDecoder(r.Body).Decode(&request)
 	if err != nil {
@@ -50,7 +52,7 @@ func (t *LinksTransport) CreateLink(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	result, err := t.service.CreateLink(request.Original_URL)
+	result, err := t.service.CreateLink(request.Original_URL, UserID)
 	if err != nil {
 		fmt.Println(err)
 		http.Error(w, "error", http.StatusInternalServerError)

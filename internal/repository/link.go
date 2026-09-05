@@ -25,7 +25,7 @@ func (r *LinksRepo) GetLinkByID(UserID int) (*domain.LinkResponse, error) {
 }
 
 func (r *LinksRepo) CreateLink(link *domain.Link) error {
-	_, err := r.db.Exec("INSERT INTO links (original_url, short_url, clicks, expires_at, is_active) VALUES (?, ?, ?, ?, ?)", link.OriginalURL, link.ShortCode, link.Clicks, link.ExpiresAt, link.IsActive)
+	_, err := r.db.Exec("INSERT INTO links (original_url, short_url, clicks, expires_at, is_active, users_id) VALUES (?, ?, ?, ?, ?, ?)", link.OriginalURL, link.ShortCode, link.Clicks, link.ExpiresAt, link.IsActive, link.UserID)
 	if err != nil {
 		return err
 	}

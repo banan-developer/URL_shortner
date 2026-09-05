@@ -4,6 +4,7 @@ import (
 	"URL_shortner/internal/domain"
 	"URL_shortner/internal/service"
 	"URL_shortner/pkg/auth"
+	"encoding/json"
 	"log"
 	"net/http"
 )
@@ -15,6 +16,15 @@ type UserTransport struct {
 func NewUserTransport(service *service.UserService) *UserTransport {
 	return &UserTransport{
 		service: service,
+	}
+}
+
+func (t *UserTransport) User(w http.ResponseWriter, r *http.Request) {
+	switch r.Method {
+	case http.MethodGet:
+		t.GetUserByID(w, r)
+	default:
+		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
 	}
 }
 
@@ -57,4 +67,16 @@ func (t *UserTransport) LoginUser(w http.ResponseWriter, r *http.Request) {
 		auth.SetUserID(w, r, UserID)
 		http.Redirect(w, r, "/home", http.StatusSeeOther)
 	}
+}
+
+func (t *UserTransport) GetUserByID(w http.ResponseWriter, r *http.Request) {
+	UserID, _ := auth.GetUserId(r)
+	User := &domain.UserResponse{}
+	err := t.service.GetUserByID(User, UserID)
+	if err != nil {
+		http.Error(w, "User not found", http.StatusNotFound)
+		return
+	}
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(User)
 }

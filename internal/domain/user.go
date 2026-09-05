@@ -11,6 +11,7 @@ type User struct {
 }
 
 type UserResponse struct {
+	UserID      int       `json:"id"`
 	UserName    string    `json:"username"`
 	Plan        string    `json:"plan"`
 	Created_at  time.Time `json:"created_at"`

@@ -53,3 +53,12 @@ func (s *UserService) LoginUser(Login string, password string) (int, error) {
 	}
 	return UserID, nil
 }
+
+func (s *UserService) GetUserByID(User *domain.UserResponse, UserID int) error {
+	if UserID >= 0 {
+		s.repo.GetUserByID(User, UserID)
+		return nil
+	} else {
+		return errors.New("Пользователь не найден")
+	}
+}

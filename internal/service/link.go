@@ -25,7 +25,7 @@ func (s *LinksService) GetLinkByID(UserID int) (*domain.LinkResponse, error) {
 	return s.repo.GetLinkByID(UserID)
 }
 
-func (s *LinksService) CreateLink(OriginalURL string) (string, error) {
+func (s *LinksService) CreateLink(OriginalURL string, UserID int) (string, error) {
 	var shortURL, err = generation.GenerationCode(6)
 	if err != nil {
 		return "", err
@@ -37,6 +37,11 @@ func (s *LinksService) CreateLink(OriginalURL string) (string, error) {
 		ExpiresAt:   time.Now().AddDate(0, 0, 7),
 		IsActive:    1,
 	}
+
+	if UserID >= 0 {
+		link.UserID = UserID
+	}
+
 	err = s.repo.CreateLink(link)
 	if err != nil {
 		return "", err
@@ -48,5 +53,6 @@ func (s *LinksService) GetLinkByShortlink(ShortCode string) (*domain.CreateLinkR
 	if ShortCode == "" {
 		return nil, errors.New("Ошибка при получении короткой ссылки")
 	}
+
 	return s.repo.GetLinkByShortlink(ShortCode)
 }

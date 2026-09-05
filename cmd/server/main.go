@@ -57,9 +57,10 @@ func main() {
 	UserHanlder := transport.NewUserTransport(UserService)
 
 	http.HandleFunc("/api/link", LinkHandler.Link)
+	http.HandleFunc("/api/user", UserHanlder.User)
 	http.HandleFunc("/{shortCode}", LinkHandler.GetLinkByShortlink)
 
-	http.HandleFunc("/home", homeHandler)
+	http.HandleFunc("/home", UnregHomeHandler)
 	http.HandleFunc("/registration", UserHanlder.RegistratingUser)
 	http.HandleFunc("/login", UserHanlder.LoginUser)
 
@@ -73,6 +74,6 @@ func main() {
 	http.ListenAndServe(":8020", nil)
 }
 
-func homeHandler(w http.ResponseWriter, r *http.Request) {
+func UnregHomeHandler(w http.ResponseWriter, r *http.Request) {
 	http.ServeFile(w, r, "./web/html/index.html")
 }

@@ -4,23 +4,16 @@ const App = {
             count: 1,
             link: "",
             shortLink: "",
-            shortCode: ""
+            shortCode: "",
+            user: null
         }
     },
-    mounted(){
-        
+    mounted: function () {
+        console.log("MOUNTED")
+        console.log("USER:", this.user)
+        this.GetUser()
     },
     methods: {
-        // async GetLinksByID(){
-        //     try{
-        //         const res = await fetch("/api/link")
-        //          if (!res.ok) throw new Error("Ошибка получения сообщений")
-        //         const data = await res.json()
-        //         this.link = data
-        //     }catch(err){
-        //         console.log(err)
-        //     }
-        // },
         async CreateLink(){
             try{
                 const res = await fetch("/api/link", {
@@ -38,7 +31,19 @@ const App = {
             }catch(err){
                 console.log(err)
             }
+        },
+        async GetUser(){
+            try{
+                const res = await fetch("/api/user")
+                if (!res.ok) throw new Error("Ошибка получения сообщений")
+                const data = await res.json()
+                this.user = data
+
+            }catch(err){
+                console.log(err)
+            }
         }
+        
     }
 }
 

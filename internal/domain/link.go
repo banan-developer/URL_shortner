@@ -10,6 +10,7 @@ type Link struct {
 	CreatedAt   time.Time
 	ExpiresAt   time.Time
 	IsActive    int
+	UserID      int
 }
 
 type LinkResponse struct {
