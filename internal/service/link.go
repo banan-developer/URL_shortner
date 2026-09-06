@@ -38,7 +38,7 @@ func (s *LinksService) CreateLink(OriginalURL string, UserID int) (string, error
 		IsActive:    1,
 	}
 
-	if UserID >= 0 {
+	if UserID > 0 {
 		link.UserID = UserID
 	}
 
@@ -46,6 +46,7 @@ func (s *LinksService) CreateLink(OriginalURL string, UserID int) (string, error
 	if err != nil {
 		return "", err
 	}
+
 	return shortURL, nil
 }
 

@@ -35,7 +35,7 @@ const App = {
         async GetUser(){
             try{
                 const res = await fetch("/api/user")
-                if (!res.ok) throw new Error("Ошибка получения сообщений")
+                if (!res.ok) throw new Error("Ошибка получения пользователя")
                 const data = await res.json()
                 this.user = data
 

@@ -69,8 +69,22 @@ func (t *UserTransport) LoginUser(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+func (t *UserTransport) LogoutUser(w http.ResponseWriter, r *http.Request) {
+	err := auth.ClearSessions(w, r)
+	if err != nil {
+		http.Error(w, "failed to logout", http.StatusInternalServerError)
+		return
+	}
+	http.Redirect(w, r, "/home", http.StatusSeeOther)
+}
+
 func (t *UserTransport) GetUserByID(w http.ResponseWriter, r *http.Request) {
-	UserID, _ := auth.GetUserId(r)
+	UserID, ok := auth.GetUserId(r)
+	if !ok {
+		http.Error(w, "Unauthorized", http.StatusUnauthorized)
+		return
+	}
+
 	User := &domain.UserResponse{}
 	err := t.service.GetUserByID(User, UserID)
 	if err != nil {

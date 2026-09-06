@@ -1,0 +1,500 @@
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+}
+
+body {
+    background: #0d091a;
+    color: #f5f1e8;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+button,
+input {
+    font-family: inherit;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* =========================
+   ОБЩИЙ КОНТЕЙНЕР
+========================= */
+
+#VUE {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+#header {
+    min-height: 130px;
+    padding: 35px 5%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    display: flex;
+    align-items: center;
+}
+
+#header h1 {
+    margin: 0;
+    font-size: 38px;
+    font-weight: 700;
+    letter-spacing: -1.5px;
+}
+
+
+/* =========================
+   АВТОРИЗОВАННЫЙ ПОЛЬЗОВАТЕЛЬ
+========================= */
+
+#VUE:has(#header) #main {
+    width: min(1100px, 92%);
+    margin: 45px auto 70px;
+    padding: 0;
+    flex: 1;
+}
+
+
+/* =========================
+   NAV
+========================= */
+
+#nav-main {
+    width: 100%;
+}
+
+#header #nav-main {
+    display: none;
+}
+
+#nav-main li {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+
+#nav-main a {
+    color: #b9b3c5;
+    font-size: 17px;
+    transition: color 0.2s ease;
+}
+
+#nav-main a:hover {
+    color: #c4ff00;
+}
+
+
+/* =========================
+   РЕДАКТОР ССЫЛОК
+========================= */
+
+#link-main {
+    background: #f7f3ea;
+    color: #141022;
+
+    min-height: 600px;
+    border-radius: 15px;
+
+    padding: 105px 70px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    box-shadow: 0 0 0 1px rgba(255,255,255,0.08);
+}
+
+#link-main h2 {
+    margin: 0 0 18px;
+
+    font-size: 45px;
+    line-height: 1.15;
+    text-align: center;
+
+    font-weight: 700;
+    letter-spacing: -1.5px;
+}
+
+#link-main h2::after {
+    content: "Быстро. Просто. Надёжно.";
+    display: block;
+
+    margin-top: 18px;
+
+    font-size: 20px;
+    font-weight: 400;
+
+    color: #7d7588;
+    letter-spacing: 0;
+}
+
+
+/* =========================
+   INPUT + BUTTON
+========================= */
+
+#link-main input {
+    width: min(800px, 100%);
+    height: 85px;
+
+    margin-top: 55px;
+    padding: 0 35px;
+
+    border: 2px solid #c4ff00;
+    border-radius: 15px;
+
+    background: #fffdfa;
+
+    color: #171126;
+    font-size: 19px;
+
+    outline: none;
+
+    transition: box-shadow 0.2s ease;
+}
+
+#link-main input:focus {
+    box-shadow: 0 0 0 4px rgba(196, 255, 0, 0.15);
+}
+
+#link-main input::placeholder {
+    color: #8b8495;
+}
+
+#link-main button {
+    margin-top: 25px;
+
+    min-width: 180px;
+    height: 58px;
+
+    padding: 0 30px;
+
+    border: none;
+    border-radius: 10px;
+
+    background: #c4ff00;
+    color: #0d091a;
+
+    font-size: 18px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease;
+}
+
+#link-main button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(196, 255, 0, 0.25);
+}
+
+#link-main button:active {
+    transform: translateY(0);
+}
+
+
+/* =========================
+   РЕЗУЛЬТАТ ССЫЛКИ
+========================= */
+
+#link-main > button + * {
+    font-size: 18px;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+#footer {
+    min-height: 100px;
+
+    padding: 25px 5%;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    color: #a7a1b0;
+}
+
+#footer p {
+    margin: 0;
+}
+
+#footer li {
+    list-style: none;
+    display: flex;
+    gap: 35px;
+}
+
+#footer a {
+    color: #aaa4b4;
+}
+
+#footer a:hover {
+    color: #c4ff00;
+}
+
+
+/* =====================================================
+   ГОСТЬ
+   ===================================================== */
+
+#VUE:not(:has(#header)) {
+    padding: 0 4%;
+}
+
+
+/* HEADER ГОСТЯ */
+
+#VUE:not(:has(#header))::before {
+    content: "Make it short";
+    display: block;
+
+    margin: 35px 0 10px;
+
+    font-size: 38px;
+    font-weight: 700;
+    letter-spacing: -1.5px;
+
+    color: #f5f1e8;
+}
+
+#VUE:not(:has(#header))::after {
+    content: "by Banana";
+
+    position: absolute;
+    top: 82px;
+    left: calc(4% + 2px);
+
+    color: #aaa4b4;
+    font-size: 18px;
+}
+
+
+/* Гостевая центральная карточка */
+
+#VUE:not(:has(#header)) > div:last-child {
+    flex: 1;
+
+    margin: 45px 0 70px;
+
+    min-height: 760px;
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 15px;
+
+    background: #171126;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+
+    padding: 100px 40px;
+}
+
+
+/* Заголовок гостя */
+
+#VUE:not(:has(#header)) > div:last-child h1 {
+    margin: 0 0 18px;
+
+    font-size: 48px;
+    text-align: center;
+
+    color: #f5f1e8;
+    letter-spacing: -1.5px;
+}
+
+#VUE:not(:has(#header)) > div:last-child h1::after {
+    content: "Быстро. Просто. Надёжно.";
+
+    display: block;
+
+    margin-top: 20px;
+
+    font-size: 20px;
+    font-weight: 400;
+
+    color: #81798c;
+    letter-spacing: 0;
+}
+
+
+/* Input гостя */
+
+#VUE:not(:has(#header)) > div:last-child input {
+    width: min(800px, 90%);
+    height: 90px;
+
+    margin-top: 65px;
+
+    padding: 0 35px;
+
+    border: 2px solid rgba(196, 255, 0, 0.65);
+    border-radius: 15px;
+
+    background: transparent;
+
+    color: #f5f1e8;
+
+    font-size: 19px;
+
+    outline: none;
+}
+
+#VUE:not(:has(#header)) > div:last-child input:focus {
+    border-color: #c4ff00;
+    box-shadow: 0 0 25px rgba(196, 255, 0, 0.08);
+}
+
+#VUE:not(:has(#header)) > div:last-child input::placeholder {
+    color: #8d8799;
+}
+
+
+/* Кнопка гостя */
+
+#VUE:not(:has(#header)) > div:last-child button {
+    min-width: 210px;
+    height: 62px;
+
+    margin-top: 30px;
+
+    padding: 0 30px;
+
+    border: 1px solid #c4ff00;
+    border-radius: 10px;
+
+    background: #c4ff00;
+    color: #0d091a;
+
+    font-size: 19px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+#VUE:not(:has(#header)) > div:last-child button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(196, 255, 0, 0.2);
+}
+
+
+/* Текст регистрации */
+
+#VUE:not(:has(#header)) > div:last-child p {
+    margin-top: 80px;
+
+    color: #aaa4b4;
+
+    font-size: 21px;
+    text-align: center;
+}
+
+
+/* Login */
+
+#VUE:not(:has(#header)) > div:last-child button:last-child {
+    margin-top: 10px;
+
+    background: transparent;
+    color: #c4ff00;
+}
+
+#VUE:not(:has(#header)) > div:last-child button:last-child:hover {
+    background: rgba(196, 255, 0, 0.08);
+}
+
+
+/* =========================
+   МОБИЛЬНАЯ ВЕРСИЯ
+========================= */
+
+@media (max-width: 700px) {
+
+    #header {
+        padding: 25px;
+        min-height: 100px;
+    }
+
+    #header h1 {
+        font-size: 28px;
+    }
+
+    #VUE:has(#header) #main {
+        width: 94%;
+        margin-top: 25px;
+    }
+
+    #link-main {
+        padding: 60px 20px;
+        min-height: 500px;
+    }
+
+    #link-main h2 {
+        font-size: 32px;
+    }
+
+    #link-main input {
+        height: 70px;
+        margin-top: 40px;
+    }
+
+    #footer {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+
+    #VUE:not(:has(#header)) {
+        padding: 0 3%;
+    }
+
+    #VUE:not(:has(#header))::before {
+        font-size: 30px;
+        margin-top: 25px;
+    }
+
+    #VUE:not(:has(#header))::after {
+        top: 61px;
+        font-size: 15px;
+    }
+
+    #VUE:not(:has(#header)) > div:last-child {
+        margin-top: 30px;
+        padding: 60px 20px;
+        min-height: 650px;
+    }
+
+    #VUE:not(:has(#header)) > div:last-child h1 {
+        font-size: 34px;
+    }
+
+    #VUE:not(:has(#header)) > div:last-child input {
+        width: 100%;
+        height: 70px;
+    }
+}

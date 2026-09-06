@@ -44,7 +44,9 @@ func (t *LinksTransport) GetLinkByID(w http.ResponseWriter, r *http.Request) {
 
 func (t *LinksTransport) CreateLink(w http.ResponseWriter, r *http.Request) {
 	var request domain.CreateLinkRequest
-	UserID, _ := auth.GetUserId(r)
+	UserID, ok := auth.GetUserId(r)
+	fmt.Println("USER ID:", UserID)
+	fmt.Println("USER ID ERROR:", ok)
 
 	err := json.NewDecoder(r.Body).Decode(&request)
 	if err != nil {
@@ -54,7 +56,6 @@ func (t *LinksTransport) CreateLink(w http.ResponseWriter, r *http.Request) {
 
 	result, err := t.service.CreateLink(request.Original_URL, UserID)
 	if err != nil {
-		fmt.Println(err)
 		http.Error(w, "error", http.StatusInternalServerError)
 		return
 	}

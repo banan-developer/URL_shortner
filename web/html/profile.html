@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мой профиль</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/profile.css" />
+</head>
+
+<body>
+
+    <div id="VUE2">
+        <div id="header">
+            <h1>MISBB - Make it short by Banana</h1>
+        <div id="nav-main">
+            <li>
+                <a>Управление ссылками</a>
+                <a>Редактор ссылок</a>
+                <a>Улучшить профиль</a>
+            </li>
+        </div>
+        </div>
+
+        <div id="main" v-if="user">
+            <div id="settings">
+                <button onclick="window.location.href='/logout'">Выйти с аккаунта</button>   
+            </div>
+
+            <img id="profile-photo" src="../static/uploads/istockphoto-1300845620-612x612.jpg" alt="Фото пользователя"/>
+            <h2>{{user.username}}</h2>
+
+            <p>Аккаунт: {{user.plan}}</p>
+            <p>Кол-во ссылок за все время: {{user.all_links}}</p>
+            <p>Кол-во активных ссылок: {{user.active_links}}</p>
+            <p>На платформе: {{user.created_at}}</p>
+        </div>
+
+        <div id="footer">
+            <p>© 2026 Make it short by Banana</p>
+            <li>
+                <a>О нас</a>
+                <a>Контакты</a>
+            </li>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="../js/profile.js"></script>
+
+</body>
+</html>
+

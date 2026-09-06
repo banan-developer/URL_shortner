@@ -32,6 +32,6 @@ func (u *UserRepo) GetUserByLogin(Login string) (int, string, error) {
 }
 
 func (u *UserRepo) GetUserByID(User *domain.UserResponse, UserID int) error {
-	err := u.db.QueryRow("SELECT id, username, plan, created_at FROM users WHERE id = ?", UserID).Scan(&User.UserID, &User.UserName, &User.Plan, User.Created_at)
+	err := u.db.QueryRow("SELECT id, username, plan, created_at FROM users WHERE id = ?", UserID).Scan(&User.UserID, &User.UserName, &User.Plan, &User.Created_at)
 	return err
 }

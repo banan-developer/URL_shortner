@@ -63,6 +63,10 @@ func main() {
 	http.HandleFunc("/home", UnregHomeHandler)
 	http.HandleFunc("/registration", UserHanlder.RegistratingUser)
 	http.HandleFunc("/login", UserHanlder.LoginUser)
+	http.HandleFunc("/logout", UserHanlder.LogoutUser)
+
+	http.HandleFunc("/profile", profileHanlder)
+	http.HandleFunc("/links", linksHandler)
 
 	fileServer := http.FileServer(http.Dir("./web/static"))
 
@@ -76,4 +80,12 @@ func main() {
 
 func UnregHomeHandler(w http.ResponseWriter, r *http.Request) {
 	http.ServeFile(w, r, "./web/html/index.html")
+}
+
+func profileHanlder(w http.ResponseWriter, r *http.Request) {
+	http.ServeFile(w, r, "./web/html/profile.html")
+}
+
+func linksHandler(w http.ResponseWriter, r *http.Request) {
+	http.ServeFile(w, r, "./web/html/links.html")
 }
