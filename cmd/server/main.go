@@ -15,7 +15,6 @@ import (
 )
 
 func main() {
-
 	f, err := os.OpenFile("info.log", os.O_RDWR|os.O_CREATE, 0666)
 	if err != nil {
 		log.Fatal(err)
@@ -32,7 +31,7 @@ func main() {
 	}
 
 	// строка подключения к бд
-	dsn := fmt.Sprintf("root:%s@tcp(127.0.0.1:3306)/url_shortner", dbPassword)
+	dsn := fmt.Sprintf("root:%s@tcp(127.0.0.1:3306)/url_shortner?parseTime=true", dbPassword)
 
 	db, err := sql.Open("mysql", dsn)
 	if err != nil {

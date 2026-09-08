@@ -31,11 +31,15 @@ func NewLinksTransport(service *service.LinksService) *LinksTransport {
 }
 
 func (t *LinksTransport) GetLinkByID(w http.ResponseWriter, r *http.Request) {
-	UserID := 1
+	UserID, ok := auth.GetUserId(r)
+	if ok != true {
+		fmt.Println("ошибка при получении айди пользователя")
+		return
+	}
 
-	Link, err := t.service.GetLinkByID(UserID)
+	Link, err := t.service.GetLinksByID(UserID)
 	if err != nil {
-		fmt.Println("Ошибка при получении ссылки")
+		fmt.Println("Ошибка при получении ссылки", err)
 	}
 
 	w.Header().Set("Content-Type", "application/json")
@@ -45,7 +49,6 @@ func (t *LinksTransport) GetLinkByID(w http.ResponseWriter, r *http.Request) {
 func (t *LinksTransport) CreateLink(w http.ResponseWriter, r *http.Request) {
 	var request domain.CreateLinkRequest
 	UserID, ok := auth.GetUserId(r)
-	fmt.Println("USER ID:", UserID)
 	fmt.Println("USER ID ERROR:", ok)
 
 	err := json.NewDecoder(r.Body).Decode(&request)

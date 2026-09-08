@@ -18,11 +18,11 @@ func NewLinksService(repo *repository.LinksRepo) *LinksService {
 	}
 }
 
-func (s *LinksService) GetLinkByID(UserID int) (*domain.LinkResponse, error) {
+func (s *LinksService) GetLinksByID(UserID int) ([]domain.LinkResponse, error) {
 	if UserID < 0 {
 		return nil, errors.New("invalid UserID")
 	}
-	return s.repo.GetLinkByID(UserID)
+	return s.repo.GetLinksByID(UserID)
 }
 
 func (s *LinksService) CreateLink(OriginalURL string, UserID int) (string, error) {

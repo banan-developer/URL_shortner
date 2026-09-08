@@ -15,13 +15,36 @@ func NewLinksRepo(db *sql.DB) *LinksRepo {
 	}
 }
 
-func (r *LinksRepo) GetLinkByID(UserID int) (*domain.LinkResponse, error) {
-	var Links domain.LinkResponse
-	err := r.db.QueryRow("SELECT original_url, short_url, clicks, created_at, expires_at, is_active FROM links WHERE users_id = ?", UserID).Scan(&Links.OriginalURL, &Links.ShortURL, &Links.Clicks, &Links.CreatedAt, &Links.ExpiresAt, &Links.IsActive)
+// func (r *LinksRepo) GetLinkByID(UserID int) (*domain.LinkResponse, error) {
+// 	var Links domain.LinkResponse
+// 	err := r.db.QueryRow("SELECT original_url, short_url, clicks, created_at, expires_at, is_active FROM links WHERE users_id = ?", UserID).Scan(&Links.OriginalURL, &Links.ShortURL, &Links.Clicks, &Links.CreatedAt, &Links.ExpiresAt, &Links.IsActive)
+// 	if err != nil {
+// 		return nil, err
+// 	}
+// 	return &Links, nil
+// }
+
+func (r *LinksRepo) GetLinksByID(UserID int) ([]domain.LinkResponse, error) {
+	rows, err := r.db.Query("SELECT original_url, short_url, clicks, created_at, expires_at, is_active FROM links WHERE users_id = ?", UserID)
 	if err != nil {
 		return nil, err
 	}
-	return &Links, nil
+	defer rows.Close()
+	var links []domain.LinkResponse
+
+	for rows.Next() {
+		var link domain.LinkResponse
+		if err := rows.Scan(&link.OriginalURL, &link.ShortURL, &link.Clicks, &link.CreatedAt, &link.ExpiresAt, &link.IsActive); err != nil {
+			return nil, err
+		}
+
+		links = append(links, link)
+	}
+
+	if links == nil {
+		links = []domain.LinkResponse{}
+	}
+	return links, err
 }
 
 func (r *LinksRepo) CreateLink(link *domain.Link) error {

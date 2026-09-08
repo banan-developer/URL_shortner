@@ -1,11 +1,178 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Управление ссылками</title>
+
+    <link rel="stylesheet" type="text/css" href="../static/css/links.css">
 </head>
+
 <body>
-    
+    <div id="VUE3">
+
+        <!-- HEADER -->
+        <header id="header">
+
+            <div class="logo">
+                <h1>
+                    Make it <span>short</span>
+                </h1>
+                <p>by Banana</p>
+            </div>
+
+            <div id="nav-main">
+                <ul>
+                    <li>
+                        <a href="/profile">Мой профиль</a>
+                        <a href="/home">Редактор ссылок</a>
+                        <a href="#">Улучшить профиль</a>
+                    </li>
+                </ul>
+            </div>
+
+        </header>
+
+
+        <!-- MAIN -->
+        <main id="main">
+
+            <div class="page-title">
+                <h2>Управление ссылками</h2>
+                <p>Все ваши ссылки под контролем</p>
+            </div>
+
+
+            <!-- LINKS -->
+            <div id="main-container">
+
+                <div class="links-list">
+
+                    <div
+                        class="link-card"
+                        v-for="(link, i) in links"
+                        :key="link.id"
+                    >
+
+                        <!-- Верхняя часть -->
+                        <div class="link-info">
+
+                            <div class="link-icon">
+                                🔗
+                            </div>
+
+                            <div class="link-content">
+
+                                <h3>
+                                    {{ link.original_url }}
+                                </h3>
+
+                                <div class="original-link">
+                                    <span>Оригинал</span>
+                                    <p>{{ link.original_url }}</p>
+                                </div>
+
+                                <div class="short-link">
+                                    <span>Короткая ссылка</span>
+                                    <a :href="'/' + link.short_url">
+                                        http://127.0.0.1:8020//{{ link.short_url }}
+                                    </a>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Нижняя часть -->
+                        <div class="link-footer">
+
+                            <div class="link-stat">
+                                <span class="stat-icon">◷</span>
+
+                                <div>
+                                    <small>Создана</small>
+                                    <p>{{ link.created_at }}</p>
+                                </div>
+                            </div>
+
+
+                            <div class="link-stat">
+                                <span class="stat-icon">♧</span>
+
+                                <div>
+                                    <small>Переходов</small>
+                                    <p>{{ link.clicks }}</p>
+                                </div>
+                            </div>
+
+
+                            <div class="link-stat">
+                                <span class="stat-icon">⌛</span>
+
+                                <div>
+                                    <small>Истекает</small>
+                                    <p>{{ link.expires_at }}</p>
+                                </div>
+                            </div>
+
+
+                            <div class="link-stat">
+                                <span class="stat-icon">✓</span>
+
+                                <div>
+                                    <small>Статус</small>
+
+                                    <p
+                                        :class="link.is_active ? 'active' : 'inactive'"
+                                    >
+                                        {{ link.is_active ? 'Активна' : 'Отключена' }}
+                                    </p>
+                                </div>
+                            </div>
+
+
+                            <!-- Кнопки -->
+                            <div class="link-actions">
+
+                                <button class="disable-btn">
+                                    ◉&nbsp; Отключить
+                                </button>
+
+                                <button class="delete-btn">
+                                    ♢&nbsp; Удалить
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </main>
+
+
+        <!-- FOOTER -->
+        <footer id="footer">
+
+            <p>© 2026 Make it short by Banana</p>
+
+            <div>
+                <a href="#">О нас</a>
+                <a href="#">Контакты</a>
+            </div>
+
+        </footer>
+
+    </div>
+
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="../js/links.js"></script>
+
 </body>
 </html>

@@ -1,1 +1,1 @@
-ERROR	2026/08/26 00:02:03 main.go:33: ошибка подлкючения к базе данныхsql: unknown driver "mysql" (forgotten import?)
+ERROR	2026/09/08 23:02:43 main.go:38: ошибка подлкючения к базе данныхinvalid bool value: true%!(EXTRA string=NotNeeGanAtlast123456)
