@@ -1,7 +1,5 @@
 package domain
 
-import "time"
-
 type User struct {
 	ID       int
 	UserName string
@@ -11,10 +9,10 @@ type User struct {
 }
 
 type UserResponse struct {
-	UserID      int       `json:"id"`
-	UserName    string    `json:"username"`
-	Plan        string    `json:"plan"`
-	Created_at  time.Time `json:"created_at"`
-	AllLinks    int       `json:"all_links"`
-	ActiveLinks int       `json:"active_links"`
+	UserID      int    `json:"id"`
+	UserName    string `json:"username"`
+	Plan        string `json:"plan"`
+	Created_at  string `json:"created_at"`
+	AllLinks    int    `json:"all_links"`
+	ActiveLinks int    `json:"active_links"`
 }

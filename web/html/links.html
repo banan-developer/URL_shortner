@@ -92,7 +92,7 @@
 
                                 <div>
                                     <small>Создана</small>
-                                    <p>{{ link.created_at }}</p>
+                                    <p>{{ formatDate(link.created_at) }}</p>
                                 </div>
                             </div>
 
@@ -112,7 +112,7 @@
 
                                 <div>
                                     <small>Истекает</small>
-                                    <p>{{ link.expires_at }}</p>
+                                    <p>{{ formatDate(link.expires_at) }}</p>
                                 </div>
                             </div>
 
@@ -135,11 +135,14 @@
                             <!-- Кнопки -->
                             <div class="link-actions">
 
-                                <button class="disable-btn">
-                                    ◉&nbsp; Отключить
+                                <button
+                                    class="disable-btn"
+                                    @click="updateIsActive(link.id, link.is_active ? 0 : 1)"
+                                >
+                                    ◉&nbsp; {{ link.is_active ? 'Отключить' : 'Включить' }}
                                 </button>
 
-                                <button class="delete-btn">
+                                <button class="delete-btn" @click="deleteLinks(link.id)"> 
                                     ♢&nbsp; Удалить
                                 </button>
 
