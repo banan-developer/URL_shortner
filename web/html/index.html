@@ -9,30 +9,30 @@
 <body>
     <div id="VUE">
         <div v-if="user">
-            <div id="header">
+            <header id="header">
                 <h1>MISBB - Make it short by Banana</h1>
-            </div>
-            <div id="main">
-                <div id="nav-main" >
+            </header>
+            <main id="main">
+                <nav id="nav-main">
                     <li>
-                        <a style="padding: 5px;" href="/links">Управление ссылками</a>
-                        <a style="padding: 5px;" href="/profile">Мой профиль</a> 
+                        <a href="/links">Управление ссылками</a>
+                        <a href="/profile">Мой профиль</a>
                     </li>
-                </div>
+                </nav>
                 <div id="link-main">
                     <h2>Past the URL to be shortened</h2>
                     <input placeholder="enter the link here" v-model="link"/>
                     <button @click="CreateLink">shorten</button>
                     {{shortLink}}
                 </div>
-            </div>
-            <div id="footer">
+            </main>
+            <footer id="footer">
                 <p>© 2026 Make it short by Banana</p>
                 <li>
-                    <a>О нас</a> <br>
-                    <a>Контакты</a>
+                    <a href="#">О нас</a>
+                    <a href="#">Контакты</a>
                 </li>
-            </div>
+            </footer>
         </div>
         <div v-else>
             <h1>MISBB - Make it short by Banana</h1>

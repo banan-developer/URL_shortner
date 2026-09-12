@@ -57,4 +57,4 @@ const App3 = {
     }
 }
 
-Vue.createApp(App3).mount('#VUE3')
+Vue.createApp(App3).mount('#VUE')

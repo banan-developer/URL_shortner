@@ -4,43 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Мой профиль</title>
-    <link rel="stylesheet" type="text/css" href="../static/css/profile.css" />
+    <link rel="stylesheet" type="text/css" href="../static/css/main.css" />
 </head>
 
 <body>
 
-    <div id="VUE2">
-        <div id="header">
+    <div id="VUE">
+        <header id="header">
             <h1>MISBB - Make it short by Banana</h1>
-        <div id="nav-main">
-            <li>
-                <a href="/links">Управление ссылками</a>
-                <a href="/home">Редактор ссылок</a>
-            </li>
-        </div>
-        </div>
+        </header>
 
-        <div id="main" v-if="user">
-            <div id="settings">
-                <button onclick="window.location.href='/logout'">Выйти с аккаунта</button>   
+        <main id="main" v-if="user">
+            <nav id="nav-main">
+                <li>
+                    <a href="/home">Редактор ссылок</a>
+                    <a href="/links">Управление ссылками</a>
+                </li>
+            </nav>
+
+            <div class="profile-card">
+                <div id="settings">
+                    <button onclick="window.location.href='/logout'">Выйти с аккаунта</button>
+                </div>
+
+                <img id="profile-photo" src="../static/uploads/istockphoto-1300845620-612x612.jpg" alt="Фото пользователя"/>
+                <h2>{{user.username}}</h2>
+
+                <p>Аккаунт: {{user.plan}}</p>
+                <p>Кол-во ссылок за все время: {{user.all_links}}</p>
+                <p>Кол-во активных ссылок: {{user.active_links}}</p>
+                <p>На платформе: {{formatDate(user.created_at)}}</p>
             </div>
+        </main>
 
-            <img id="profile-photo" src="../static/uploads/istockphoto-1300845620-612x612.jpg" alt="Фото пользователя"/>
-            <h2>{{user.username}}</h2>
-
-            <p>Аккаунт: {{user.plan}}</p>
-            <p>Кол-во ссылок за все время: {{user.all_links}}</p>
-            <p>Кол-во активных ссылок: {{user.active_links}}</p>
-            <p>На платформе: {{formatDate(user.created_at)}}</p>
-        </div>
-
-        <div id="footer">
+        <footer id="footer">
             <p>© 2026 Make it short by Banana</p>
             <li>
-                <a>О нас</a>
-                <a>Контакты</a>
+                <a href="#">О нас</a>
+                <a href="#">Контакты</a>
             </li>
-        </div>
+        </footer>
     </div>
 
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>

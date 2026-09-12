@@ -255,6 +255,294 @@ a {
 }
 
 
+/* =========================
+   ЗАГОЛОВОК СТРАНИЦЫ
+========================= */
+
+.page-title {
+    margin-bottom: 30px;
+}
+
+.page-title h2 {
+    margin: 0;
+    font-size: 34px;
+    letter-spacing: -1px;
+}
+
+.page-title p {
+    margin: 8px 0 0;
+    color: #81798c;
+    font-size: 17px;
+}
+
+
+/* =========================
+   СПИСОК ССЫЛОК
+========================= */
+
+.links-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.link-card {
+    background: #171126;
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    border-radius: 15px;
+    padding: 28px 32px 22px;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.link-card:hover {
+    border-color: rgba(196, 255, 0, 0.25);
+    transform: translateY(-2px);
+}
+
+.link-info {
+    display: flex;
+    gap: 25px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+}
+
+.link-icon {
+    width: 76px;
+    height: 76px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: #252039;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    color: #c4ff00;
+}
+
+.link-content {
+    min-width: 0;
+    flex: 1;
+}
+
+.link-content h3 {
+    margin: 4px 0 15px;
+    font-size: 20px;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.original-link span,
+.short-link span {
+    display: block;
+    margin-bottom: 6px;
+    color: #81798c;
+    font-size: 15px;
+}
+
+.original-link p {
+    margin: 0;
+    color: #aaa4b4;
+    font-size: 16px;
+    word-break: break-all;
+}
+
+.short-link {
+    margin-top: 17px;
+}
+
+.short-link a {
+    color: #c4ff00;
+    font-size: 17px;
+    word-break: break-all;
+    transition: opacity 0.2s ease;
+}
+
+.short-link a:hover {
+    opacity: 0.75;
+}
+
+.link-footer {
+    padding-top: 22px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr auto;
+    align-items: center;
+    gap: 20px;
+}
+
+.link-stat {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.stat-icon {
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    background: #211b35;
+    color: #aaa4b4;
+    font-size: 17px;
+}
+
+.link-stat small {
+    display: block;
+    margin-bottom: 4px;
+    color: #81798c;
+    font-size: 13px;
+}
+
+.link-stat p {
+    margin: 0;
+    color: #ddd8e4;
+    font-size: 14px;
+}
+
+.link-stat p.active {
+    color: #c4ff00;
+}
+
+.link-stat p.inactive {
+    color: #e05b6b;
+}
+
+.link-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.link-actions button {
+    height: 48px;
+    padding: 0 18px;
+    border-radius: 9px;
+    background: transparent;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+}
+
+.disable-btn {
+    border: 1px solid rgba(255, 255, 255, 0.20);
+    color: #aaa4b4;
+}
+
+.disable-btn:hover {
+    border-color: #aaa4b4;
+    background: rgba(255, 255, 255, 0.05);
+    transform: translateY(-1px);
+}
+
+.delete-btn {
+    border: 1px solid rgba(230, 70, 90, 0.55);
+    color: #e05b6b;
+}
+
+.delete-btn:hover {
+    border-color: #e05b6b;
+    background: rgba(224, 91, 107, 0.08);
+    transform: translateY(-1px);
+}
+
+
+/* =========================
+   КАРТОЧКА ПРОФИЛЯ
+========================= */
+
+.profile-card {
+    width: min(600px, 100%);
+    margin: 0 auto;
+    background: #171126;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 15px;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+#settings {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 25px;
+}
+
+#settings button {
+    background: transparent;
+    color: #aaa4b4;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 8px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.2s;
+}
+
+#settings button:hover {
+    color: #f5f1e8;
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+#profile-photo {
+    display: block;
+    width: 120px;
+    height: 120px;
+    border-radius: 15px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    object-fit: cover;
+    margin-bottom: 20px;
+    background: #0d091a;
+}
+
+.profile-card h2 {
+    margin: 0 0 20px;
+    font-size: 32px;
+    font-weight: 700;
+    color: #f5f1e8;
+}
+
+.profile-card p:first-of-type {
+    display: inline-block;
+    background: rgba(196, 255, 0, 0.15);
+    color: #c4ff00;
+    border: 1px solid rgba(196, 255, 0, 0.3);
+    padding: 8px 15px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+
+.profile-card p {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 15px 20px;
+    border-radius: 10px;
+    color: #ddd;
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+.profile-card p:nth-of-type(2) {
+    color: #f5f1e8;
+    font-weight: 700;
+}
+
+.profile-card p:last-of-type {
+    color: #c4ff00;
+    font-weight: 700;
+}
+
+.profile-card p:not(:first-of-type) {
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 0;
+}
+
+
 /* =====================================================
    ГОСТЬ
    ===================================================== */
@@ -496,5 +784,63 @@ a {
     #VUE:not(:has(#header)) > div:last-child input {
         width: 100%;
         height: 70px;
+    }
+
+    .page-title h2 {
+        font-size: 27px;
+    }
+
+    .link-card {
+        padding: 20px;
+    }
+
+    .link-info {
+        gap: 15px;
+    }
+
+    .link-icon {
+        width: 55px;
+        height: 55px;
+        font-size: 23px;
+    }
+
+    .link-content h3 {
+        font-size: 17px;
+    }
+
+    .original-link p {
+        font-size: 14px;
+    }
+
+    .short-link a {
+        font-size: 15px;
+    }
+
+    .link-footer {
+        grid-template-columns: 1fr 1fr;
+        gap: 18px 10px;
+    }
+
+    .link-actions {
+        width: 100%;
+    }
+
+    .link-actions button {
+        flex: 1;
+        padding: 0 10px;
+    }
+
+    .profile-card {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 900px) {
+    .link-footer {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .link-actions {
+        grid-column: 1 / -1;
     }
 }

@@ -32,4 +32,4 @@ const App2 = {
     }
 }
 
-Vue.createApp(App2).mount('#VUE2')
+Vue.createApp(App2).mount('#VUE')
