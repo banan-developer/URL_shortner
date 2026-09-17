@@ -1,51 +1,180 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Редактор ссылок</title>
-    <link rel="stylesheet" type="text/css" href="../static/css/main.css" />
+
+    <title>MISBB — Make it short by Banana</title>
+
+    <link rel="stylesheet" type="text/css" href="../static/css/main.css">
 </head>
+
 <body>
-    <div id="VUE">
-        <div v-if="user">
-            <header id="header">
-                <h1>MISBB - Make it short by Banana</h1>
-            </header>
-            <main id="main">
-                <nav id="nav-main">
+
+<div id="VUE">
+
+    <!-- =====================================================
+         АВТОРИЗОВАННЫЙ ПОЛЬЗОВАТЕЛЬ
+    ====================================================== -->
+
+    <div v-if="user">
+
+        <!-- HEADER -->
+        <header id="header">
+
+            <div class="logo">
+                <h1>
+                    Make it <span>short</span>
+                </h1>
+
+                <p>by Banana</p>
+            </div>
+
+
+            <!-- NAVIGATION -->
+            <nav id="nav-main">
+
+                <ul>
                     <li>
-                        <a href="/links">Управление ссылками</a>
-                        <a href="/profile">Мой профиль</a>
+                        <a href="/links">
+                            Управление ссылками
+                        </a>
+
+                        <a href="/profile">
+                            Мой профиль
+                        </a>
                     </li>
-                </nav>
-                <div id="link-main">
-                    <h2>Past the URL to be shortened</h2>
-                    <input placeholder="enter the link here" v-model="link"/>
-                    <button @click="CreateLink">shorten</button>
-                    {{shortLink}}
+                </ul>
+
+            </nav>
+
+        </header>
+
+
+        <!-- MAIN -->
+        <main id="main">
+
+            <div id="link-main">
+
+                <h2>
+                    Paste the URL to be shortened
+                </h2>
+
+                <input
+                    placeholder="enter the link here"
+                    v-model="link"
+                >
+
+                <button @click="CreateLink">
+                    shorten
+                </button>
+
+                <div class="short-result">
+                    {{ shortLink }}
                 </div>
-            </main>
-            <footer id="footer">
-                <p>© 2026 Make it short by Banana</p>
-                <li>
-                    <a href="#">О нас</a>
-                    <a href="#">Контакты</a>
-                </li>
-            </footer>
-        </div>
-        <div v-else>
-            <h1>MISBB - Make it short by Banana</h1>
-            <label for="link">Past the URL to be shortened</label>
-            <input placeholder="enter you link here" name="link" v-model="link">
-            <button @click="CreateLink">shorten</button>
-            {{shortLink}}
-            <p>Login in to manage your links</p>
-            <button onclick="window.location.href='/login'">Login in to account</button>
-        </div>
+
+            </div>
+
+        </main>
+
+
+        <!-- FOOTER -->
+        <footer id="footer">
+
+            <p>
+                © 2026 Make it short by Banana
+            </p>
+
+            <div>
+                <a href="https://vk.ru/banana2009rusprokilleryt">
+                    Контакты
+                </a>
+            </div>
+
+        </footer>
+
     </div>
 
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-    <script src="../js/main.js"></script>
+
+    <!-- =====================================================
+         ГОСТЬ
+    ====================================================== -->
+
+    <div v-else id="guest-page">
+
+        <!-- HEADER ГОСТЯ -->
+        <header id="guest-header">
+
+            <div class="logo">
+                <h1>
+                    Make it <span>short</span>
+                </h1>
+
+                <p>by Banana</p>
+            </div>
+
+        </header>
+
+
+        <!-- MAIN ГОСТЯ -->
+        <main id="guest-main">
+
+            <h2>
+                Paste the URL to be shortened
+            </h2>
+
+            <input
+                placeholder="enter your link here"
+                v-model="link"
+            >
+
+            <button @click="CreateLink">
+                shorten
+            </button>
+
+            <div class="short-result">
+                {{ shortLink }}
+            </div>
+
+
+            <p>
+                Login in to manage your links
+            </p>
+
+            <button
+                class="login-button"
+                onclick="window.location.href='/login'"
+            >
+                Login in to account
+            </button>
+
+        </main>
+
+
+        <!-- FOOTER ГОСТЯ -->
+        <footer id="footer">
+
+            <p>
+                © 2026 Make it short by Banana
+            </p>
+
+            <div>
+
+                <a href="https://vk.ru/banana2009rusprokilleryt">
+                    Контакты
+                </a>
+            </div>
+
+        </footer>
+
+    </div>
+
+</div>
+
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script src="../js/main.js"></script>
+
 </body>
 </html>

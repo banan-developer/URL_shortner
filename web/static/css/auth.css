@@ -1,0 +1,231 @@
+/* auth.css — стили для страниц авторизации и регистрации */
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+}
+
+body {
+    background: #0d091a;
+    color: #f5f1e8;
+    font-family: Arial, Helvetica, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* =========================
+   ОБЩИЙ КОНТЕЙНЕР ФОРМЫ
+========================= */
+#div_reg,
+#div_auth {
+    width: min(460px, 100%);
+
+    background: #171126;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 15px;
+
+    padding: 40px;
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Заголовок */
+#div_reg h2,
+#div_auth h2 {
+    margin: 0 0 30px;
+    font-size: 32px;
+    font-weight: 700;
+    color: #f5f1e8;
+    letter-spacing: -1px;
+}
+
+/* =========================
+   ФОРМА
+========================= */
+#div_reg form,
+#div_auth form {
+    margin: 0;
+}
+
+#div_reg p,
+#div_auth p {
+    margin: 0 0 18px;
+}
+
+/* Fieldset в авторизации */
+#div_auth fieldset {
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 20px;
+    margin: 0 0 20px;
+}
+
+#div_auth legend {
+    color: #b9b3c5;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 0 10px;
+}
+
+/* =========================
+   ЛЕЙБЛЫ
+========================= */
+#div_reg label,
+#div_auth label {
+    display: block;
+    color: #b9b3c5;
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+/* =========================
+   ИНПУТЫ
+========================= */
+#div_reg input,
+#div_auth input {
+    width: 100%;
+
+    background: rgba(255, 255, 255, 0.03);
+    color: #f5f1e8;
+
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+
+    padding: 14px 16px;
+
+    font-size: 16px;
+    font-family: inherit;
+
+    transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+#div_reg input::placeholder,
+#div_auth input::placeholder {
+    color: #6b6575;
+}
+
+#div_reg input:focus,
+#div_auth input:focus {
+    outline: none;
+    border-color: rgba(196, 255, 0, 0.5);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* =========================
+   КНОПКИ
+========================= */
+#div_reg button,
+#div_auth button {
+    border-radius: 10px;
+    padding: 12px 22px;
+    font-size: 15px;
+    font-weight: 700;
+    font-family: inherit;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+/* Основная кнопка (submit) */
+#div_reg button[type="submit"],
+#div_auth button[type="submit"] {
+    background: #c4ff00;
+    color: #0d091a;
+    border: 1px solid #c4ff00;
+}
+
+#div_reg button[type="submit"]:hover,
+#div_auth button[type="submit"]:hover {
+    background: #d4ff33;
+    border-color: #d4ff33;
+}
+
+/* Кнопка отмены (reset) */
+#div_reg button[type="reset"],
+#div_auth button[type="reset"] {
+    background: transparent;
+    color: #aaa4b4;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    margin-left: 10px;
+}
+
+#div_reg button[type="reset"]:hover,
+#div_auth button[type="reset"]:hover {
+    color: #f5f1e8;
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* =========================
+   ССЫЛКИ ВНИЗУ
+========================= */
+#div_reg p:last-of-type,
+#div_auth p:last-of-type {
+    margin-top: 25px;
+    margin-bottom: 0;
+    text-align: center;
+}
+
+#div_reg p:last-of-type span,
+#div_auth p:last-of-type span {
+    color: #b9b3c5;
+    font-size: 15px;
+}
+
+#div_reg p:last-of-type a,
+#div_auth p:last-of-type a {
+    color: #c4ff00;
+    font-weight: 700;
+    transition: color 0.2s ease;
+}
+
+#div_reg p:last-of-type a:hover,
+#div_auth p:last-of-type a:hover {
+    color: #d4ff33;
+    text-decoration: underline;
+}
+
+/* =========================
+   МОБИЛЬНАЯ ВЕРСИЯ
+========================= */
+@media (max-width: 500px) {
+    body {
+        padding: 20px 15px;
+        align-items: flex-start;
+    }
+
+    #div_reg,
+    #div_auth {
+        padding: 25px;
+    }
+
+    #div_reg h2,
+    #div_auth h2 {
+        font-size: 26px;
+        margin-bottom: 20px;
+    }
+
+    #div_reg button,
+    #div_auth button {
+        width: 100%;
+        margin-left: 0 !important;
+    }
+
+    #div_reg button[type="reset"],
+    #div_auth button[type="reset"] {
+        margin-top: 10px;
+    }
+}

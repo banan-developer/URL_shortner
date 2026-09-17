@@ -1,3 +1,4 @@
+
 * {
     box-sizing: border-box;
 }
@@ -25,71 +26,84 @@ a {
     text-decoration: none;
 }
 
-/* =========================
-   ОБЩИЙ КОНТЕЙНЕР
-========================= */
 
-#VUE {
+/* =====================================================
+   АВТОРИЗОВАННАЯ СТРАНИЦА
+===================================================== */
+
+#VUE > div:first-child {
     min-height: 100vh;
+
     display: flex;
     flex-direction: column;
 }
 
 
-/* =========================
+/* =====================================================
    HEADER
-========================= */
+===================================================== */
 
 #header {
     min-height: 130px;
-    padding: 35px 5%;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+
+    padding: 25px 5%;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
 
-#header h1 {
+
+/* =====================================================
+   ЛОГО
+===================================================== */
+
+.logo h1 {
     margin: 0;
-    font-size: 38px;
+
+    font-size: 36px;
     font-weight: 700;
+
     letter-spacing: -1.5px;
 }
 
+.logo h1 span {
+    color: #c4ff00;
+}
 
-/* =========================
-   АВТОРИЗОВАННЫЙ ПОЛЬЗОВАТЕЛЬ
-========================= */
+.logo p {
+    margin: 3px 0 0 3px;
 
-#VUE:has(#header) #main {
-    width: min(1100px, 92%);
-    margin: 45px auto 70px;
+    color: #8c8699;
+
+    font-size: 17px;
+}
+
+
+/* =====================================================
+   NAVIGATION
+===================================================== */
+
+#nav-main ul {
+    margin: 0;
     padding: 0;
-    flex: 1;
-}
 
-
-/* =========================
-   NAV
-========================= */
-
-#nav-main {
-    width: 100%;
-}
-
-#header #nav-main {
-    display: none;
+    list-style: none;
 }
 
 #nav-main li {
-    list-style: none;
     display: flex;
-    justify-content: center;
-    gap: 40px;
+
+    gap: 35px;
 }
 
 #nav-main a {
-    color: #b9b3c5;
-    font-size: 17px;
+    color: #aaa4b4;
+
+    font-size: 16px;
+
     transition: color 0.2s ease;
 }
 
@@ -98,60 +112,87 @@ a {
 }
 
 
-/* =========================
+/* =====================================================
+   MAIN
+===================================================== */
+
+#main {
+    width: min(1100px, 92%);
+
+    margin: 0 auto;
+
+    padding: 45px 0 70px;
+
+    flex: 1;
+}
+
+
+/* =====================================================
    РЕДАКТОР ССЫЛОК
-========================= */
+===================================================== */
 
 #link-main {
-    background: #f7f3ea;
-    color: #141022;
-
     min-height: 600px;
-    border-radius: 15px;
 
     padding: 105px 70px;
+
+    border-radius: 15px;
+
+    background: #f7f3ea;
+    color: #141022;
 
     display: flex;
     flex-direction: column;
     align-items: center;
 
-    box-shadow: 0 0 0 1px rgba(255,255,255,0.08);
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.08);
 }
 
+
+/* =====================================================
+   ЗАГОЛОВОК
+===================================================== */
+
 #link-main h2 {
-    margin: 0 0 18px;
+    margin: 0;
 
     font-size: 45px;
     line-height: 1.15;
+
     text-align: center;
 
     font-weight: 700;
+
     letter-spacing: -1.5px;
 }
 
 #link-main h2::after {
     content: "Быстро. Просто. Надёжно.";
+
     display: block;
 
     margin-top: 18px;
 
+    color: #7d7588;
+
     font-size: 20px;
     font-weight: 400;
 
-    color: #7d7588;
     letter-spacing: 0;
 }
 
 
-/* =========================
-   INPUT + BUTTON
-========================= */
+/* =====================================================
+   INPUT
+===================================================== */
 
 #link-main input {
     width: min(800px, 100%);
+
     height: 85px;
 
     margin-top: 55px;
+
     padding: 0 35px;
 
     border: 2px solid #c4ff00;
@@ -160,6 +201,7 @@ a {
     background: #fffdfa;
 
     color: #171126;
+
     font-size: 19px;
 
     outline: none;
@@ -175,11 +217,17 @@ a {
     color: #8b8495;
 }
 
-#link-main button {
-    margin-top: 25px;
 
+/* =====================================================
+   BUTTON
+===================================================== */
+
+#link-main > button {
     min-width: 180px;
+
     height: 58px;
+
+    margin-top: 25px;
 
     padding: 0 30px;
 
@@ -199,55 +247,69 @@ a {
         box-shadow 0.15s ease;
 }
 
-#link-main button:hover {
+#link-main > button:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(196, 255, 0, 0.25);
+
+    box-shadow:
+        0 8px 25px rgba(196, 255, 0, 0.25);
 }
 
-#link-main button:active {
+#link-main > button:active {
     transform: translateY(0);
 }
 
 
-/* =========================
-   РЕЗУЛЬТАТ ССЫЛКИ
-========================= */
+/* =====================================================
+   РЕЗУЛЬТАТ
+===================================================== */
 
-#link-main > button + * {
+.short-result {
+    margin-top: 20px;
+
+    max-width: 800px;
+
     font-size: 18px;
+
+    text-align: center;
+
+    word-break: break-all;
 }
 
 
-/* =========================
+/* =====================================================
    FOOTER
-========================= */
+===================================================== */
 
 #footer {
     min-height: 100px;
 
     padding: 25px 5%;
 
-    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    border-top: 1px solid rgba(255, 255, 255, 0.10);
 
     display: flex;
     align-items: center;
     justify-content: space-between;
 
-    color: #a7a1b0;
+    color: #8f899b;
+
+    font-size: 14px;
 }
 
 #footer p {
     margin: 0;
 }
 
-#footer li {
-    list-style: none;
+#footer > div {
     display: flex;
-    gap: 35px;
+
+    gap: 30px;
 }
 
 #footer a {
     color: #aaa4b4;
+
+    transition: color 0.2s ease;
 }
 
 #footer a:hover {
@@ -255,387 +317,101 @@ a {
 }
 
 
-/* =========================
-   ЗАГОЛОВОК СТРАНИЦЫ
-========================= */
+/* =====================================================
+   =====================================================
+   ГОСТЬ
+   =====================================================
+===================================================== */
 
-.page-title {
-    margin-bottom: 30px;
-}
+#guest-page {
+    min-height: 100vh;
 
-.page-title h2 {
-    margin: 0;
-    font-size: 34px;
-    letter-spacing: -1px;
-}
-
-.page-title p {
-    margin: 8px 0 0;
-    color: #81798c;
-    font-size: 17px;
-}
-
-
-/* =========================
-   СПИСОК ССЫЛОК
-========================= */
-
-.links-list {
     display: flex;
     flex-direction: column;
-    gap: 20px;
-}
-
-.link-card {
-    background: #171126;
-    border: 1px solid rgba(255, 255, 255, 0.10);
-    border-radius: 15px;
-    padding: 28px 32px 22px;
-    transition: border-color 0.2s ease, transform 0.2s ease;
-}
-
-.link-card:hover {
-    border-color: rgba(196, 255, 0, 0.25);
-    transform: translateY(-2px);
-}
-
-.link-info {
-    display: flex;
-    gap: 25px;
-    padding-bottom: 25px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.09);
-}
-
-.link-icon {
-    width: 76px;
-    height: 76px;
-    flex-shrink: 0;
-    border-radius: 50%;
-    background: #252039;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 30px;
-    color: #c4ff00;
-}
-
-.link-content {
-    min-width: 0;
-    flex: 1;
-}
-
-.link-content h3 {
-    margin: 4px 0 15px;
-    font-size: 20px;
-    font-weight: 600;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.original-link span,
-.short-link span {
-    display: block;
-    margin-bottom: 6px;
-    color: #81798c;
-    font-size: 15px;
-}
-
-.original-link p {
-    margin: 0;
-    color: #aaa4b4;
-    font-size: 16px;
-    word-break: break-all;
-}
-
-.short-link {
-    margin-top: 17px;
-}
-
-.short-link a {
-    color: #c4ff00;
-    font-size: 17px;
-    word-break: break-all;
-    transition: opacity 0.2s ease;
-}
-
-.short-link a:hover {
-    opacity: 0.75;
-}
-
-.link-footer {
-    padding-top: 22px;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr auto;
-    align-items: center;
-    gap: 20px;
-}
-
-.link-stat {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.stat-icon {
-    width: 35px;
-    height: 35px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 8px;
-    background: #211b35;
-    color: #aaa4b4;
-    font-size: 17px;
-}
-
-.link-stat small {
-    display: block;
-    margin-bottom: 4px;
-    color: #81798c;
-    font-size: 13px;
-}
-
-.link-stat p {
-    margin: 0;
-    color: #ddd8e4;
-    font-size: 14px;
-}
-
-.link-stat p.active {
-    color: #c4ff00;
-}
-
-.link-stat p.inactive {
-    color: #e05b6b;
-}
-
-.link-actions {
-    display: flex;
-    gap: 10px;
-}
-
-.link-actions button {
-    height: 48px;
-    padding: 0 18px;
-    border-radius: 9px;
-    background: transparent;
-    font-size: 14px;
-    cursor: pointer;
-    transition: background 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
-}
-
-.disable-btn {
-    border: 1px solid rgba(255, 255, 255, 0.20);
-    color: #aaa4b4;
-}
-
-.disable-btn:hover {
-    border-color: #aaa4b4;
-    background: rgba(255, 255, 255, 0.05);
-    transform: translateY(-1px);
-}
-
-.delete-btn {
-    border: 1px solid rgba(230, 70, 90, 0.55);
-    color: #e05b6b;
-}
-
-.delete-btn:hover {
-    border-color: #e05b6b;
-    background: rgba(224, 91, 107, 0.08);
-    transform: translateY(-1px);
-}
-
-
-/* =========================
-   КАРТОЧКА ПРОФИЛЯ
-========================= */
-
-.profile-card {
-    width: min(600px, 100%);
-    margin: 0 auto;
-    background: #171126;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 15px;
-    padding: 40px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-}
-
-#settings {
-    display: flex;
-    justify-content: flex-end;
-    margin-bottom: 25px;
-}
-
-#settings button {
-    background: transparent;
-    color: #aaa4b4;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 8px 15px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 14px;
-    transition: 0.2s;
-}
-
-#settings button:hover {
-    color: #f5f1e8;
-    border-color: rgba(255, 255, 255, 0.3);
-}
-
-#profile-photo {
-    display: block;
-    width: 120px;
-    height: 120px;
-    border-radius: 15px;
-    border: 2px solid rgba(255, 255, 255, 0.1);
-    object-fit: cover;
-    margin-bottom: 20px;
-    background: #0d091a;
-}
-
-.profile-card h2 {
-    margin: 0 0 20px;
-    font-size: 32px;
-    font-weight: 700;
-    color: #f5f1e8;
-}
-
-.profile-card p:first-of-type {
-    display: inline-block;
-    background: rgba(196, 255, 0, 0.15);
-    color: #c4ff00;
-    border: 1px solid rgba(196, 255, 0, 0.3);
-    padding: 8px 15px;
-    border-radius: 8px;
-    font-size: 14px;
-    font-weight: 700;
-    margin-bottom: 30px;
-}
-
-.profile-card p {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    padding: 15px 20px;
-    border-radius: 10px;
-    color: #ddd;
-    font-size: 16px;
-    margin: 10px 0;
-}
-
-.profile-card p:nth-of-type(2) {
-    color: #f5f1e8;
-    font-weight: 700;
-}
-
-.profile-card p:last-of-type {
-    color: #c4ff00;
-    font-weight: 700;
-}
-
-.profile-card p:not(:first-of-type) {
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
-    border-radius: 0;
 }
 
 
 /* =====================================================
-   ГОСТЬ
-   ===================================================== */
+   HEADER ГОСТЯ
+===================================================== */
 
-#VUE:not(:has(#header)) {
-    padding: 0 4%;
+#guest-header {
+    min-height: 130px;
+
+    padding: 25px 5%;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+
+    display: flex;
+    align-items: center;
 }
 
 
-/* HEADER ГОСТЯ */
+/* =====================================================
+   MAIN ГОСТЯ
+===================================================== */
 
-#VUE:not(:has(#header))::before {
-    content: "Make it short";
-    display: block;
+#guest-main {
+    width: min(1100px, 92%);
 
-    margin: 35px 0 10px;
+    margin: 0 auto;
 
-    font-size: 38px;
-    font-weight: 700;
-    letter-spacing: -1.5px;
+    padding: 105px 70px;
 
-    color: #f5f1e8;
-}
-
-#VUE:not(:has(#header))::after {
-    content: "by Banana";
-
-    position: absolute;
-    top: 82px;
-    left: calc(4% + 2px);
-
-    color: #aaa4b4;
-    font-size: 18px;
-}
-
-
-/* Гостевая центральная карточка */
-
-#VUE:not(:has(#header)) > div:last-child {
     flex: 1;
 
-    margin: 45px 0 70px;
-
-    min-height: 760px;
-
-    border: 1px solid rgba(255, 255, 255, 0.12);
     border-radius: 15px;
-
-    background: #171126;
 
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-
-    padding: 100px 40px;
 }
 
 
-/* Заголовок гостя */
+/* =====================================================
+   ЗАГОЛОВОК ГОСТЯ
+===================================================== */
 
-#VUE:not(:has(#header)) > div:last-child h1 {
-    margin: 0 0 18px;
+#guest-main h2 {
+    margin: 0;
 
-    font-size: 48px;
+    font-size: 45px;
+    line-height: 1.15;
+
     text-align: center;
 
-    color: #f5f1e8;
+    font-weight: 700;
+
     letter-spacing: -1.5px;
 }
 
-#VUE:not(:has(#header)) > div:last-child h1::after {
+#guest-main h2::after {
     content: "Быстро. Просто. Надёжно.";
 
     display: block;
 
-    margin-top: 20px;
+    margin-top: 18px;
+
+    color: #81798c;
 
     font-size: 20px;
     font-weight: 400;
 
-    color: #81798c;
     letter-spacing: 0;
 }
 
 
-/* Input гостя */
+/* =====================================================
+   INPUT ГОСТЯ
+===================================================== */
 
-#VUE:not(:has(#header)) > div:last-child input {
-    width: min(800px, 90%);
-    height: 90px;
+#guest-main input {
+    width: min(800px, 100%);
 
-    margin-top: 65px;
+    height: 85px;
+
+    margin-top: 55px;
 
     padding: 0 35px;
 
@@ -651,95 +427,186 @@ a {
     outline: none;
 }
 
-#VUE:not(:has(#header)) > div:last-child input:focus {
+#guest-main input:focus {
     border-color: #c4ff00;
-    box-shadow: 0 0 25px rgba(196, 255, 0, 0.08);
+
+    box-shadow:
+        0 0 25px rgba(196, 255, 0, 0.08);
 }
 
-#VUE:not(:has(#header)) > div:last-child input::placeholder {
+#guest-main input::placeholder {
     color: #8d8799;
 }
 
 
-/* Кнопка гостя */
+/* =====================================================
+   BUTTON ГОСТЯ
+===================================================== */
 
-#VUE:not(:has(#header)) > div:last-child button {
-    min-width: 210px;
-    height: 62px;
+#guest-main > button {
+    min-width: 180px;
 
-    margin-top: 30px;
+    height: 58px;
+
+    margin-top: 25px;
 
     padding: 0 30px;
 
-    border: 1px solid #c4ff00;
+    border: none;
     border-radius: 10px;
 
     background: #c4ff00;
     color: #0d091a;
 
-    font-size: 19px;
+    font-size: 18px;
     font-weight: 700;
 
     cursor: pointer;
 
-    transition: 0.2s ease;
+    transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease;
 }
 
-#VUE:not(:has(#header)) > div:last-child button:hover {
+#guest-main > button:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 30px rgba(196, 255, 0, 0.2);
+
+    box-shadow:
+        0 8px 25px rgba(196, 255, 0, 0.25);
 }
 
 
-/* Текст регистрации */
+/* =====================================================
+   ТЕКСТ ДЛЯ ГОСТЯ
+===================================================== */
 
-#VUE:not(:has(#header)) > div:last-child p {
-    margin-top: 80px;
+#guest-main p {
+    margin: 80px 0 0;
 
     color: #aaa4b4;
 
-    font-size: 21px;
+    font-size: 20px;
+
     text-align: center;
 }
 
 
-/* Login */
+/* =====================================================
+   LOGIN
+===================================================== */
 
-#VUE:not(:has(#header)) > div:last-child button:last-child {
-    margin-top: 10px;
+#guest-main .login-button {
+    margin-top: 15px;
+
+    border: 1px solid #c4ff00;
 
     background: transparent;
     color: #c4ff00;
 }
 
-#VUE:not(:has(#header)) > div:last-child button:last-child:hover {
+#guest-main .login-button:hover {
     background: rgba(196, 255, 0, 0.08);
 }
 
 
-/* =========================
+/* =====================================================
    МОБИЛЬНАЯ ВЕРСИЯ
-========================= */
+===================================================== */
 
-@media (max-width: 700px) {
+@media (max-width: 900px) {
 
     #header {
-        padding: 25px;
-        min-height: 100px;
+        padding: 25px 4%;
     }
 
-    #header h1 {
-        font-size: 28px;
+    #nav-main li {
+        gap: 18px;
     }
 
-    #VUE:has(#header) #main {
-        width: 94%;
-        margin-top: 25px;
+    #nav-main a {
+        font-size: 14px;
+    }
+
+    #main {
+        width: 92%;
     }
 
     #link-main {
-        padding: 60px 20px;
+        padding: 80px 40px;
+    }
+
+    #guest-main {
+        width: 92%;
+
+        padding: 80px 40px;
+    }
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 600px) {
+
+    #header,
+    #guest-header {
+        min-height: 100px;
+
+        padding: 20px 5%;
+
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        gap: 20px;
+    }
+
+
+    /* LOGO */
+
+    .logo h1 {
+        font-size: 28px;
+    }
+
+    .logo p {
+        font-size: 14px;
+    }
+
+
+    /* NAV */
+
+    #nav-main {
+        width: 100%;
+    }
+
+    #nav-main li {
+        justify-content: space-between;
+
+        gap: 10px;
+    }
+
+    #nav-main a {
+        font-size: 13px;
+    }
+
+
+    /* MAIN */
+
+    #main {
+        width: 92%;
+
+        padding-top: 30px;
+        padding-bottom: 40px;
+    }
+
+
+    /* EDITOR */
+
+    #link-main {
         min-height: 500px;
+
+        padding: 60px 20px;
     }
 
     #link-main h2 {
@@ -747,100 +614,46 @@ a {
     }
 
     #link-main input {
+        width: 100%;
+
         height: 70px;
+
         margin-top: 40px;
     }
 
+
+    /* GUEST */
+
+    #guest-main {
+        width: 92%;
+
+        padding: 60px 20px;
+    }
+
+    #guest-main h2 {
+        font-size: 32px;
+    }
+
+    #guest-main input {
+        width: 100%;
+
+        height: 70px;
+
+        margin-top: 40px;
+    }
+
+
+    /* FOOTER */
+
     #footer {
         flex-direction: column;
-        gap: 20px;
+
+        gap: 18px;
+
         text-align: center;
     }
 
-    #VUE:not(:has(#header)) {
-        padding: 0 3%;
-    }
-
-    #VUE:not(:has(#header))::before {
-        font-size: 30px;
-        margin-top: 25px;
-    }
-
-    #VUE:not(:has(#header))::after {
-        top: 61px;
-        font-size: 15px;
-    }
-
-    #VUE:not(:has(#header)) > div:last-child {
-        margin-top: 30px;
-        padding: 60px 20px;
-        min-height: 650px;
-    }
-
-    #VUE:not(:has(#header)) > div:last-child h1 {
-        font-size: 34px;
-    }
-
-    #VUE:not(:has(#header)) > div:last-child input {
-        width: 100%;
-        height: 70px;
-    }
-
-    .page-title h2 {
-        font-size: 27px;
-    }
-
-    .link-card {
-        padding: 20px;
-    }
-
-    .link-info {
-        gap: 15px;
-    }
-
-    .link-icon {
-        width: 55px;
-        height: 55px;
-        font-size: 23px;
-    }
-
-    .link-content h3 {
-        font-size: 17px;
-    }
-
-    .original-link p {
-        font-size: 14px;
-    }
-
-    .short-link a {
-        font-size: 15px;
-    }
-
-    .link-footer {
-        grid-template-columns: 1fr 1fr;
-        gap: 18px 10px;
-    }
-
-    .link-actions {
-        width: 100%;
-    }
-
-    .link-actions button {
-        flex: 1;
-        padding: 0 10px;
-    }
-
-    .profile-card {
-        padding: 20px;
-    }
-}
-
-@media (max-width: 900px) {
-    .link-footer {
-        grid-template-columns: 1fr 1fr;
-    }
-
-    .link-actions {
-        grid-column: 1 / -1;
+    #footer > div {
+        gap: 25px;
     }
 }
