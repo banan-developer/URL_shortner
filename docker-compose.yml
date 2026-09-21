@@ -5,7 +5,7 @@ services:
     container_name: url-shortener-app
     restart: unless-stopped
     ports:
-      - "80:8020"
+      - "8022:8020"
     environment:
       DB_PASSWORD: ${DB_PASSWORD}
     depends_on:
