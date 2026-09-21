@@ -1,0 +1,11 @@
+.git
+.gitignore
+.env
+db/
+*.log
+info.log
+start.bat
+readme/
+node_modules
+web/node_modules
+web/dist
