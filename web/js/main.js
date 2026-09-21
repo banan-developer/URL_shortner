@@ -26,7 +26,7 @@ const App = {
                 })
                 const data = await res.json()
                 this.shortCode = data
-                this.shortLink = "http://127.0.0.1:8020/" + this.shortCode
+                this.shortLink = "http:/151.245.140:8020/" + this.shortCode
 
             }catch(err){
                 console.log(err)
